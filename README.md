@@ -1,16 +1,17 @@
 # MLEnd Hums and Whistles
 
-Identifying which of eight songs a person is humming or whistling, from 10 seconds of audio.
-
 <p align="center">
-  <img src="/Humming to Music Recognition.png" alt="Humming to Music Recognition" width="500"/>
+  <img src="/Humming to Music Recognition.png" alt="Humming to Music Recognition" width="800"/>
 </p>
 
-![Python](https://img.shields.io/badge/python-3.11%2B-blue)
-![scikit-learn](https://img.shields.io/badge/scikit--learn-1.5-orange)
-![TensorFlow](https://img.shields.io/badge/tensorflow-2.17-ff6f00)
-![License](https://img.shields.io/badge/license-MIT-green)
+<p align="center">
+  <img src="https://img.shields.io/badge/python-3.11%2B-blue" alt="Python">
+  <img src="https://img.shields.io/badge/scikit--learn-1.5-orange" alt="scikit-learn">
+  <img src="https://img.shields.io/badge/tensorflow-2.17-ff6f00" alt="TensorFlow">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License">
+</p>
 
+> Identifying which of eight songs a person is humming or whistling, from 10 seconds of audio.
 
 ---
 
@@ -201,20 +202,20 @@ performers is roughly 2.6× chance with the interval's lower bound clearing 12.5
 also nowhere near usable as a product, which is the honest reading.
 
 **2. Pitch-class content, not timbre, carries the signal.** Adding chroma and spectral contrast lifted
-cross-validated accuracy from 0.246 to 0.316 — the single largest gain in the project. Doubling the
+cross-validated accuracy from 0.246 to 0.316, the single largest gain in the project. Doubling the
 MFCC description from mean to mean-plus-standard-deviation gained nothing at all (0.214 → 0.214).
 That is the expected pattern if what distinguishes songs is which notes are sung rather than the
 texture of the voice singing them, and it is reassuring under a participant-disjoint protocol, since
 timbre is largely a property of the performer.
 
 Grouped permutation importance on the fitted model agrees and sharpens the point. Permuting the
-chroma block cost roughly 0.16 in test accuracy — by far the largest effect — the delta block roughly
+chroma block cost roughly 0.16 in test accuracy, by far the largest effect, the delta block roughly
 0.08, and the MFCC mean and standard-deviation blocks around 0.01 each. Spectral contrast cost almost
 nothing, so the gain from feature set D is attributable to chroma specifically rather than to the two
 descriptor families it added together.
 
 **3. Sequence models did not repay their capacity at this sample size.** The CNN reached 0.276 on
-validation against 0.407 on its training split, and the LSTM managed 0.165 — barely above the
+validation against 0.407 on its training split, and the LSTM managed 0.165, barely above the
 stratified-random floor. With ~510 recordings in the inner training split and no augmentation,
 capacity is being spent memorising performers rather than learning melodic contour.
 
@@ -223,7 +224,7 @@ logistic regression scored 0.286 in cross-validation, below both tuned members i
 reported rather than quietly dropped: the three members share one feature representation and their
 errors are evidently correlated, which is precisely the condition under which averaging buys nothing.
 
-**5. Hums were easier than whistles** — 39.7% against 26.1% test accuracy — which runs contrary to the
+**5. Hums were easier than whistles** — 39.7% against 26.1% test accuracy. This runs contrary to the
 intuition that a whistle's cleaner pitch contour should be easier to classify.
 
 **6. Per-class difficulty varies.** "Happy" reached 52.0% recall while "Married"
@@ -332,19 +333,16 @@ feature extraction (cached thereafter) and the majority is network training and 
 - **The full ~6,000-file dataset** rather than the 800-file sample, which would test directly whether
   the sequence models were capacity-limited or data-limited.
 
-## Author
-
-**Cipriano Gertrudes Sebastiao** — MSc Data Science and Artificial Intelligence, Queen Mary
-University of London.
-
-Developed originally for ECS7020P (Principles of Machine Learning) and subsequently reworked, with
-the evaluation protocol rebuilt.
 
 ## Acknowledgements
 
 The MLEnd Hums and Whistles dataset was created by students and staff at the School of Electronic
 Engineering and Computer Science, Queen Mary University of London, under the MLEnd Datasets
 initiative.
+
+This project was developed originally for the ECS7020P - Principles of Machine Learning (MSc Data Science and Artificial Intelligence at Queen Mary
+University of London) and subsequently reworked, with
+the evaluation protocol rebuilt.
 
 ## License
 
